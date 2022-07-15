@@ -4,12 +4,130 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/script.js"></script>
     <title>Sign Up</title>
 </head>
 <body>
+    <div class="container">
+        <form class="reg-form">
+            <div class="reg-form__inner">
+                <div class="reg-form__titlebox">
+                    <div class="reg-form__title">
+                        Sign up
+                    </div>
+                </div>
+                <div class="reg-form__wrapper">
+                    <div class="reg-form__text">
+                        New user? 
+                    </div>
+                    <div class="reg-form__subtext">
+                        Use the form below to create your account.
+                    </div>
+                    <div class="reg-form__line">
+                        <div class="reg-form__box">
+                            <label class="reg-form__label" for="first-name">
+                                First Name
+                            </label>
+                            <input class="reg-form__input" id="first-name" type="text">
+                        </div>
+                        <div class="reg-form__box">
+                            <label class="reg-form__label" for="last-name">
+                                Last Name
+                            </label>
+                            <input class="reg-form__input" id="last-name" type="text">
+                        </div>
+                    </div>
     
+                    <div class="reg-form__line">
+                        <div class="reg-form__box">
+                            <label class="reg-form__label" for="nationality">
+                                Nationality
+                            </label>
+                            <select class="reg-form__select" id="nationality">
+                                <option value="American">American</option>
+                                <option value="American">Australian</option>
+                                <option value="Belarus">Belarus</option>
+                            </select>
+                        </div>
+                        <div class="reg-form__box">
+                            <label class="reg-form__label" for="email">
+                                E-mail
+                            </label>
+                            <input class="reg-form__input" id="email" type="email">
+                        </div>
+                    </div>
+    
+                    <div class="reg-form__line">
+                        <div class="reg-form__box">
+                            <label class="reg-form__label">
+                                Date of Birth
+                            </label>
+                            <div class="reg-form__select-box">
+                                <select class="reg-form__select day-select" id="day">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <select class="reg-form__select month-select" id="month">
+                                    <option value="January">January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                </select>
+                                <select class="reg-form__select year-select" id="year">
+                                    <option value="1994">1994</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1996">1996</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="reg-form__box">
+                            <label class="reg-form__label">
+                                Gender
+                            </label>
+                            <div class="reg-form__radio-box">
+                                <input class="reg-form__radio" id="male" type="radio">
+                                <label class="reg-form__label-radio" for="male">
+                                    Male
+                                </label>
+                                <input class="reg-form__radio" id="female" type="radio">
+                                <label class="reg-form__label-radio" for="female">
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="reg-form__line">
+                        <div class="reg-form__box">
+                            <label class="reg-form__label" for="pass">
+                                Password
+                            </label>
+                            <input class="reg-form__input" id="pass" type="password">
+                        </div>
+                        <div class="reg-form__box">
+                            <label class="reg-form__label" for="reppass">
+                                Confirm Password
+                            </label>
+                            <input class="reg-form__input" id="reppass" type="password">
+                        </div>
+                    </div>
+    
+                    <div class="reg-form__line last-line">
+                        <div class="reg-form__login">
+                            Have an account? <a href="#">Login</a>
+                        </div>
+                        <button class="reg-form__btn" type="submit">
+                            Complete Signup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
