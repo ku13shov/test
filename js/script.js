@@ -16,7 +16,7 @@ const formSubtext = document.querySelector('.reg-form__subtext');
 const formBox = document.querySelectorAll('.reg-form__box');
 
 const regEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-const regPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+const regPass = /^(?=.*[a-z,а-я])(?=.*[A-Z,А-Я])(?=.*\d).{8,}$/;
 
 
 const validateEmail = function() {
@@ -104,6 +104,7 @@ const validateReppass = function() {
     }
 }
 
+//вывод сообщения об успешной регистрации и обнуление полей
 const successReg = function() {
     formWrapper.style.position = 'relative';
     formText.classList.add('registered-text');
@@ -116,12 +117,35 @@ const successReg = function() {
     firstName.value = lastName.value = email.value = pass.value = reppass.value = '';
 }
 
+//анимации кнопки "Complete Signup"
 const unSuccessReg = function() {
     submit.classList.add('animation');
     setTimeout(() => {
         submit.classList.remove('animation');
     }, 100);
 }
+
+const showFields = function() {
+    formBox.forEach((item, i) => {
+        setTimeout(() => {
+            item.style.opacity = '1';
+        }, 700 * i);
+    });
+}
+
+//повтор анимации svg
+const replay = function(myVivus) {
+    myVivus.play(myVivus.getStatus() === 'end' ? -1 : 1);
+}
+
+const vivusOptions = {
+    type: 'oneByOne',
+    duration:500,
+};
+
+new Vivus('my-svg', vivusOptions,replay);
+
+showFields();
 
 
 submit.addEventListener('click', (e) => {

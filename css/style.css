@@ -75,9 +75,17 @@ body {
 .reg-form__wrapper {
     padding: 40px 20px 33px;
     background-color: #fff;
-    background-image: url("../images/noun.svg");
+    /* background-image: url("../images/noun.svg");
     background-position: 220px 128px;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    position: relative;
+    overflow: hidden;
+}
+
+.reg-form__svg {
+    position: absolute;
+    top: 115px;
+    right: -100px;
 }
 
 .reg-form__text {
@@ -102,6 +110,8 @@ body {
 .reg-form__box {
     width: 235px;
     position: relative;
+    opacity: 0;
+    transition: all 0.25s linear;
 }
 
 .reg-form__box + .reg-form__box {
@@ -198,6 +208,7 @@ body {
     font-size: 13px;
     line-height: 15px;
     color: #000;
+    z-index: 100;
 }
 
 .reg-form__login a {
@@ -219,6 +230,7 @@ body {
     line-height: 18px;
     color: #fff;
     cursor: pointer;
+    z-index: 100;
 }
 
 .wrong-email {
@@ -239,7 +251,7 @@ body {
 }
 
 .opacity0 {
-    opacity: 0;
+    opacity: 0 !important;
 }
 
 .registered-text {
@@ -334,5 +346,8 @@ body {
     }
     .last-line {
         margin-top: 30px;
+    }
+    .reg-form__svg {
+        top: 100px;
     }
 }
