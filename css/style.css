@@ -246,6 +246,14 @@ body {
     left: 0;
 }
 
+.warn-pass {
+    font-size: 10px;
+    color: #ff2222;
+    position: relative;
+    margin-top: 15px;
+    z-index: 100;
+}
+
 .wrong-name {
     border-bottom: 2px solid #ff2828;
 }

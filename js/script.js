@@ -8,6 +8,9 @@ const warnEmail = document.createElement('div');
 const warnFirstName = document.createElement('div');
 const warnLastName = document.createElement('div');
 const pass = document.querySelector('#pass');
+const warnPass = document.createElement('div');
+const warnMessPass = document.createElement('div');
+const lastLine = document.querySelector('.last-line');
 const reppass = document.querySelector('#reppass');
 const warnReppass = document.createElement('div');
 const formWrapper = document.querySelector('.reg-form__wrapper');
@@ -68,13 +71,28 @@ const validateLastName = function() {
 }
 
 const validatePass = function() {
-    if (!pass.value || !pass.value.match(regPass)) {
+    if (!pass.value) {
         pass.classList.add('wrong-name');
-        alert('Password must contain at least 8 characters, uppercase and lowercase letters, and numbers');
+        warnPass.classList.add('warn');
+        warnPass.textContent = 'Please fill in the field';
+        pass.parentElement.append(warnPass);
 
         return false;
-    } else {
+    }
+    if (pass.value && !pass.value.match(regPass)) {
+        pass.classList.add('wrong-name');
+        warnMessPass.classList.add('warn-pass');
+        warnMessPass.textContent = 'Password must contain at least 8 characters, uppercase and lowercase letters, and numbers';
+        lastLine.before(warnMessPass);
+
+        warnPass.remove();
+
+        return false;
+    }
+    if (pass.value && pass.value.match(regPass)) {
         pass.classList.remove('wrong-name');
+        warnPass.remove();
+        warnMessPass.remove();
 
         return true;
     }
