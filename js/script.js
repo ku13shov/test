@@ -17,6 +17,9 @@ const formWrapper = document.querySelector('.reg-form__wrapper');
 const formText = document.querySelector('.reg-form__text');
 const formSubtext = document.querySelector('.reg-form__subtext');
 const formBox = document.querySelectorAll('.reg-form__box');
+const yearSelect = document.querySelector('#year');
+const monthSelect = document.querySelector('#month');
+const daySelect = document.querySelector('#day');
 
 const regEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const regPass = /^(?=.*[a-z,а-я])(?=.*[A-Z,А-Я])(?=.*\d).{8,}$/;
@@ -147,8 +150,58 @@ const showFields = function() {
     formBox.forEach((item, i) => {
         setTimeout(() => {
             item.style.opacity = '1';
-        }, 700 * i);
+        }, 600 * i);
     });
+}
+
+const yearAutoComplete = function() {
+    let years = [];
+
+    for (let i = 1950; i <= 2022; i++) {
+        years.push(i);
+    }
+    
+    years.forEach(item => {
+        let option = new Option(`${item}`, `${item}`);
+        yearSelect.append(option);
+    });
+}
+
+const dayAutoComplete = function() {
+    let days = [];
+    let amount = 31;
+
+    if (monthSelect.value === 'January' ||
+        monthSelect.value === 'March' ||
+        monthSelect.value === 'May' ||
+        monthSelect.value === 'July' ||
+        monthSelect.value === 'August' ||
+        monthSelect.value === 'October' ||
+        monthSelect.value === 'December') {
+            amount = 31;
+    }
+    if (monthSelect.value === 'April' ||
+        monthSelect.value === 'June' ||
+        monthSelect.value === 'September' ||
+        monthSelect.value === 'November') {
+            amount = 30;
+    }
+    if (monthSelect.value === 'February') {
+        amount = 29;
+    }
+
+    for (let i = 1; i <= amount; i++) {
+        days.push(i);
+    }
+    
+    days.forEach(item => {
+        let option = new Option(`${item}`, `${item}`);
+        daySelect.append(option);
+    });
+}
+
+const dayClear = function() {
+    daySelect.innerHTML = '';
 }
 
 //повтор анимации svg
@@ -164,6 +217,8 @@ const vivusOptions = {
 new Vivus('my-svg', vivusOptions,replay);
 
 showFields();
+yearAutoComplete();
+dayAutoComplete();
 
 
 submit.addEventListener('click', (e) => {
@@ -180,4 +235,9 @@ submit.addEventListener('click', (e) => {
     } else {
         unSuccessReg();
     }
+});
+
+monthSelect.addEventListener('change', () => {
+    dayClear();
+    dayAutoComplete();
 });
